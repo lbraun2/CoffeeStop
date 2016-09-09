@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Coffee Stop</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<!--This page allows user to log-in with their email and password or
+register an account with their email/password. -->
+<body>
+  <header>
+    <section class="name">COFFEE STOP</section>
+
+    <form name="login" class="login">
+      <input  type="email" name="email" placeholder="Email Address">
+      <input  type="password" name="password" placeholder="Password">
+      <button>Sign in</button>
+    </form>
+  </header>
+
+  <div class="content">
+      <p align=center>R E G I S T E R</p>
+
+      <form name="registration">
+                <label for="firstName">First Name</label>
+                <input  type="text" name="firstName">
+
+                <label for="lastName">Last Name</label>
+                <input  type="text" name="lastName">
+
+                <label for="email">Email</label>
+                <input  type="email" name="email">
+
+                <label for="password">Password (between 6-12 characters)</label>
+                <input  type="password" name="password" pattern="[^\s]{6,12}$" title="Three letter country code">
+        </table>
+        <button class="register">Join Now</button>
+      </form>
+  </div>
+
+  <footer> <strong>SWE 432 - Ellen Nkonya & Laura Braun</strong></footer>
+</body>
+</html>
