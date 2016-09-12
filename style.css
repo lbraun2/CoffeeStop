@@ -1,25 +1,29 @@
 body{
   background-image: url("coffee.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
   font-family: Tahoma, Geneva, sans-serif;
 }
 
 header{
-  width: 95%;
-  margin: 0 auto;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 50px;
   background-color: black;
-  opacity: 0.65;
+  opacity: 0.75;
+  position: fixed;
+  z-index: 1;
 }
 
 footer{
   text-align: center;
-  position:absolute;
+  position:relative;
   bottom:0;
   width:100%;
   height:25px;
   color: #4CAF50;
-  padding-top: 7.5px;
   font-size: 15px;
 }
 
@@ -28,12 +32,36 @@ input{
 }
 
 table{
-  margin: 10px 10px 10px 10px;
-  width: 80%;
+  width: 50%;
   height: auto;
-  background-color: red;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
 
+tr{
+  opacity: 0.85;
+  border-bottom: 1px solid #4CAF50;
+}
 
+tr:hover{
+  border-bottom: 1px solid white;
+  opacity: 1;
+}
+
+td{
+  padding-top: 10px;
+  height: 150px;
+  padding-bottom: 10px;
+}
+
+img{
+  max-height: 125px;
+  width: auto;
+}
+
+img:hover{
+  transform: scale(1.2);
+  transition: 0.5s ease-in-out;
 }
 
 button{
@@ -41,11 +69,12 @@ button{
 }
 
 .content{
-  width: 80%;
+  padding: 30px;
+  width: 60%;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 90px;
+  margin-bottom: 30px;
   min-height: 500px;
-  height: auto;
   background-color: black;
   opacity: 0.75;
   position: relative;
@@ -56,6 +85,20 @@ button{
   width: 100%;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.error{
+  color:red;
+  text-align:center;
+  display: none;
+}
+
+input:invalid + div{
+  display: block;
+}
+
+input:focus + div{
+  display:none;
 }
 
 .name{
@@ -70,14 +113,48 @@ p{
   color: #4CAF50;
   font-size: 35px;
   padding-top: 15px;
+  text-align: center;
+}
 
+.results{
+  text-align: right;
+  color:white;
+}
+
+h2{
+  color: #0CAADC;
+  margin-bottom: -10px;
+}
+
+
+a:hover{
+  height: 125px;
+  color: #4CAF50;
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+
+
+h3{
+  color: white;
+  margin-bottom: -10px;
+  line-height: 16px;
+}
+
+h4{
+  color: #FFA500;
+  text-decoration: underline;
+}
+
+h5{
+  color: white;
 }
 
 .content form{
-    color: grey;
-    width: 400px;
-    margin: 0 auto ;
-    font-size: 15px;
+  color: grey;
+  width: 400px;
+  margin: 0 auto ;
+  font-size: 15px;
 }
 
 .login{
@@ -87,13 +164,13 @@ p{
 }
 
 .login button{
-  width: 70px;
+  max-width: 70px;
   height: 25px;
 }
 
 .login input{
   height: 20px;
-  width: 150px;
+  max-width: 150px;
 }
 
 .register{
@@ -109,7 +186,28 @@ label{
 
 #options{
   display: inline-block;
+  float:right;
+}
+
+.homepageSearch input{
+  width: 25%;
+  height: 60px;
+  background-color: black;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  opacity: 0.60;
+  margin-left: 37%;
+  margin-bottom: 15%;
+  margin-top: 22%;
+  transition: 0.5s ease-in;
+}
+
+.homepageSearch input:focus{
+  font-size: 25px;
   width: 50%;
+  margin-left: 25%;
+  transition: 0.5s ease-in-out;
 }
 
 #search{

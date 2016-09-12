@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Coffee Stop</title>
+    <title>CS-Log-in/Register</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -20,7 +20,7 @@ register an account with their email/password. -->
   </header>
 
   <div class="content">
-      <p align=center>R E G I S T E R</p>
+    <p align=center>R E G I S T E R</p>
 
       <form name="registration">
                 <label for="firstName">First Name</label>
@@ -31,9 +31,11 @@ register an account with their email/password. -->
 
                 <label for="email">Email</label>
                 <input  type="email" name="email">
+                <div class="error">Please enter a valid email</div>
 
                 <label for="password">Password (between 6-12 characters)</label>
-                <input  type="password" name="password" pattern="[^\s]{6,12}$" title="Three letter country code">
+                <input  type="password" name="password" pattern="[^\s]{6,12}$" title="6-12 character password">
+                <div class="error">Your password must be between 6-12 characters</div>
         </table>
         <button class="register">Join Now</button>
       </form>
