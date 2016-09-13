@@ -1,0 +1,208 @@
+body{
+  background-image: url("coffee.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+header{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  opacity: 0.75;
+  position: fixed;
+  z-index: 1;
+}
+
+footer{
+  text-align: center;
+  position:relative;
+  bottom:0;
+  width:100%;
+  height:25px;
+  color: #4CAF50;
+  font-size: 15px;
+}
+
+input{
+  border: 1px solid #4CAF50;
+}
+
+label{
+  display: block;
+}
+
+table{
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+tr{
+  opacity: 0.85;
+  border-bottom: 1px solid #4CAF50;
+}
+
+tr:hover{
+  border-bottom: 1px solid white;
+  opacity: 1;
+}
+
+td{
+  padding-top: 10px;
+  height: 150px;
+  padding-bottom: 10px;
+}
+
+img{
+  max-height: 125px;
+  width: auto;
+}
+
+img:hover{
+  transform: scale(1.2);
+  transition: 0.5s ease-in-out;
+}
+
+button{
+  background-color: #4CAF50;
+}
+
+.content{
+  padding: 30px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 10%;
+  margin-bottom: 30px;
+  min-height: 500px;
+  background-color: black;
+  opacity: 0.75;
+  position: relative;
+}
+
+.content input{
+  height: 25px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.error{
+  color:red;
+  text-align:center;
+  display: none;
+}
+
+input:invalid + div{
+  display: block;
+}
+
+input:focus + div{
+  display:none;
+}
+
+.name{
+  font-size: 35px;
+  color: #4CAF50;
+  width: 50%;
+  padding-left: 10px;
+  float:left;
+}
+
+p{
+  color: #4CAF50;
+  font-size: 35px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.results{
+  text-align: right;
+  color:white;
+}
+
+h2{
+  color: #0CAADC;
+  margin-bottom: -10px;
+}
+
+a:hover{
+  height: 125px;
+  color: #4CAF50;
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+
+h3{
+  color: white;
+  margin-bottom: -10px;
+  line-height: 16px;
+}
+
+h4{
+  color: #FFA500;
+  text-decoration: underline;
+}
+
+h5{
+  color: white;
+}
+
+.content form{
+  color: grey;
+  width: 400px;
+  margin: 0 auto ;
+  font-size: 15px;
+}
+
+.login{
+  margin-top: 13px;
+  width: 40%;
+  float: right;
+}
+
+.login button{
+  max-width: 70px;
+  height: 25px;
+}
+
+.login input{
+  height: 20px;
+  max-width: 150px;
+}
+
+.register{
+  margin-top:15px;
+  width: 100%;
+  height: 25px;
+}
+
+#options{
+  display: inline-block;
+  float:right;
+}
+
+.homepageSearch input{
+  width: 25%;
+  height: 60px;
+  background-color: black;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  opacity: 0.60;
+  margin-left: 37%;
+  margin-bottom: 15%;
+  margin-top: 22%;
+  transition: 0.5s ease-in;
+}
+
+.homepageSearch input:focus{
+  font-size: 25px;
+  width: 50%;
+  margin-left: 25%;
+  transition: 0.5s ease-in-out;
+}
