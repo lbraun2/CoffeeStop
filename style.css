@@ -31,6 +31,10 @@ input{
   border: 1px solid #4CAF50;
 }
 
+label{
+  display: block;
+}
+
 table{
   width: 50%;
   height: auto;
@@ -72,7 +76,7 @@ button{
   padding: 30px;
   width: 60%;
   margin: 0 auto;
-  margin-top: 90px;
+  margin-top: 10%;
   margin-bottom: 30px;
   min-height: 500px;
   background-color: black;
@@ -126,14 +130,12 @@ h2{
   margin-bottom: -10px;
 }
 
-
 a:hover{
   height: 125px;
   color: #4CAF50;
   transform: scale(1.1);
   text-decoration: underline;
 }
-
 
 h3{
   color: white;
@@ -179,11 +181,6 @@ h5{
   height: 25px;
 }
 
-
-label{
-  display: block;
-}
-
 #options{
   display: inline-block;
   float:right;
@@ -208,10 +205,4 @@ label{
   width: 50%;
   margin-left: 25%;
   transition: 0.5s ease-in-out;
-}
-
-#search{
-  background-size: cover;
-  height: 500px;
-  width: auto;
 }
