@@ -1,1 +1,58 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en" ng-app="coffeeApp">
+<head>
+    <meta charset="utf-8">
+    <title>INDEX</title>
+    <link rel="shortcut icon" href="">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="script.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+<body ng-controller="mainController">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkjontohFR_ceeDYiKFcoSjNGqN-sNVCc&libraries=places"></script>
+  <script src="app.js"></script>
+
+<div class="main">
+    <div ng-view></div>
+</div>
+<footer> <strong>SWE 432 - Ellen Nkonya & Laura Braun</strong></footer>
+<script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyD9xeq34gctsKfIajyTC7DRo1o13knB-zU",
+      authDomain: "coffeestop-820c3.firebaseapp.com",
+      databaseURL: "https://coffeestop-820c3.firebaseio.com",
+      storageBucket: "coffeestop-820c3.appspot.com",
+      messagingSenderId: "282398477281"
+    };
+    firebase.initializeApp(config);
+
+
+    var ref = new Firebase("https://coffeestop-820c3.firebaseio.com/");
+      $("#register").on("click", function() {
+          var email = $("#userEmail").val();
+          var password = $("#userPassword").val();
+          ref.createUser(email, password, function(error,  user) {
+            if (!error) {
+              doLogin(user);
+              console.log("Successfully created user account with uid:", user.uid);
+
+            } else {
+              alert(error);
+              console.log("Error creating user:", error);
+            }
+        });
+      });
+</script>
+</body>
+</html>
