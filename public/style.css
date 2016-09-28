@@ -17,6 +17,11 @@ header{
   z-index: 1;
 }
 
+#mapArea {
+  width: 500px;
+  height: 800px;
+}
+
 footer{
   text-align: center;
   position:relative;
@@ -151,6 +156,7 @@ h4{
 h5{
   color: white;
 }
+
 
 .content form{
   color: grey;
