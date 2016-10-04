@@ -14,12 +14,11 @@ header{
   background-color: black;
   opacity: 0.75;
   position: fixed;
+  font-size: 35px;
+  color: #4CAF50;
+  padding-left: 10px;
+  float:left;
   z-index: 1;
-}
-
-#mapArea {
-  width: 500px;
-  height: 800px;
 }
 
 footer{
@@ -39,7 +38,7 @@ input{
 label{
   display: block;
 }
-
+/*
 table{
   width: 50%;
   height: auto;
@@ -52,15 +51,15 @@ tr{
   border-bottom: 1px solid #4CAF50;
 }
 
-tr:hover{
-  border-bottom: 1px solid white;
-  opacity: 1;
-}
-
 td{
   padding-top: 10px;
   height: 150px;
   padding-bottom: 10px;
+} */
+
+tr:hover{
+  border-bottom: 1px solid white;
+  opacity: 1;
 }
 
 img{
@@ -110,14 +109,6 @@ input:focus + div{
   display:none;
 }
 
-.name{
-  font-size: 35px;
-  color: #4CAF50;
-  width: 50%;
-  padding-left: 10px;
-  float:left;
-}
-
 p{
   color: #4CAF50;
   font-size: 35px;
@@ -157,7 +148,6 @@ h5{
   color: white;
 }
 
-
 .content form{
   color: grey;
   width: 400px;
@@ -165,19 +155,9 @@ h5{
   font-size: 15px;
 }
 
-.login{
-  margin-top: 13px;
-  width: 40%;
-  float: right;
-}
-
-.login button{
-  max-width: 70px;
-  height: 25px;
-}
-
 .login input{
   height: 20px;
+  margin-right: 10px;
   max-width: 150px;
 }
 
@@ -203,6 +183,7 @@ h5{
   margin-left: 37%;
   margin-bottom: 15%;
   margin-top: 22%;
+  color: white;
   transition: 0.5s ease-in;
 }
 
@@ -215,4 +196,81 @@ h5{
 
 [data-search]{
   color:#4CAF50;
+}
+
+#infoContent{
+  display:none;
+}
+
+table {
+  font-size: 12px;
+  margin-top: 100px;
+  float: right;
+  background-color: transparent;
+
+}
+td{
+  background: transparent;
+}
+#map {
+  width: 60%;
+  height: 500px;
+}
+#listing {
+  position: absolute;
+  width: 300px;
+  height: 500px;
+  overflow: auto;
+  left: 500px;
+  top: 155px;
+  float: right;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+#locationField {
+  position: absolute;
+  width: 50%;
+  height: 25px;
+  top: 0px;
+  z-index: 5;
+}
+
+#autocomplete {
+  width: 100%;
+  margin-top: 150px;
+}
+
+.placeIcon {
+  width: 20px;
+  height: 34px;
+  margin: 4px;
+}
+.coffeeIcon {
+  width: 24px;
+  height: 24px;
+}
+#resultsTable {
+  margin: 0 auto;
+  color: red;
+  border-collapse: collapse;
+  width: 240px;
+}
+td{
+  margin: 10px 10px 10px 10px;
+  color:black;
+}
+#rating {
+  font-size: 13px;
+  font-family: Arial Unicode MS;
+}
+.iw_table_row {
+  height: 18px;
+}
+.iw_attribute_name {
+  font-weight: bold;
+  text-align: right;
+}
+.iw_table_icon {
+  text-align: right;
 }
