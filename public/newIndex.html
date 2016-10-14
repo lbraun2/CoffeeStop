@@ -178,8 +178,8 @@
                        </table>
                      </div>
                      </div>
-					
-					 <div class="chart"></div>
+					 <p> Ratings </p>
+					 <div className="chart"></div>
 
                  </div>
 				 
@@ -268,21 +268,7 @@
            places = new google.maps.places.PlacesService(map);
 
            autocomplete.addListener('place_changed', onPlaceChanged);
-		   var data = [4, 8, 15, 16, 23, 42];
 
-//			d3.select(".chart")
-				d3.selectAll("div")
-					.data(data)
-				.enter().append("div")
-//					.style("width", function(d) 
-//						{ return d * 10 + "px"; })
-					.text(function(d) { return d; });
-					console.log("Made it here");
-//			d3.selectAll("p").style("color", "white");
-//			d3.select("body")
-//			.selectAll("p")
-//			.data(data)
-//			.text(function(d) {return d;});
 
          }
 
@@ -305,11 +291,12 @@
              bounds: map.getBounds(),
              types: ['cafe']
            };
-
+		   
            places.nearbySearch(search, function(results, status) {
              if (status === google.maps.places.PlacesServiceStatus.OK) {
                clearResults();
                clearMarkers();
+			   var data = [];
                // Create a marker for each hotel found, and
                // assign a letter of the alphabetic to each marker icon.
                for (var i = 0; i < results.length; i++) {
@@ -327,9 +314,29 @@
                  google.maps.event.addListener(markers[i], 'click', showInfoWindow);
                  setTimeout(dropMarker(i), i * 100);
                  addResult(results[i], i);
+				 
+				 if(results[i].hasOwnProperty("rating")){
+				 data[i] = results[i].rating;
+				 }
+				 else{
+				 data[i] = 0;
+				 
+				 }
+				 
+				 
                }
+			   i = -1;
+
+			   d3.select(".chart")
+				.selectAll("div")
+					.data(data)
+				.enter().append("div")
+					.style("width", function(d) 
+						{ return d * 100 + "px"; })
+						.text(function(d) { i ++; return "(" + String.fromCharCode('A'.charCodeAt(0) + i) + ") "+ d; });
              }
            });
+
          }
 
          function clearMarkers() {
