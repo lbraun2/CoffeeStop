@@ -2,6 +2,7 @@
 <html lang="en" ng-app="coffeeApp">
    <head>
       <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width">
       <title>COFFEE SHOP</title>
       <link rel="shortcut icon" href="">
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -14,6 +15,12 @@
       <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+	  
+	  <script src="https://d3js.org/d3.v4.min.js"></script>
+	  
+	  <script src="https://fb.me/react-with-addons-15.1.0.js"></script>
+	  <script src="https://fb.me/react-dom-15.1.0.js"></script>
+	  
       <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
@@ -67,7 +74,7 @@
            var Home = React.createClass({
              render: function() {
                return (
-                 <div>
+               <div>
                 <div className="homepageSearch">
                   <input name="homepageSearch" id="searching" placeholder="Enter your address, city/state, or zipcode.." />
                   <Link to="/search"><button className="nearMe">Find coffee near me</button></Link>
@@ -171,9 +178,11 @@
                        </table>
                      </div>
                      </div>
-
+					 <p> Ratings </p>
+					 <div className="chart"></div>
 
                  </div>
+				 
                );
              }
          });
@@ -208,6 +217,7 @@
          destination
          );
       </script>
+	  
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF9KYCmkJ-TfR0npZmnfvjRfMlNKJK1pk&libraries=places&callback=initMap"
          async defer></script>
          <script>
@@ -259,6 +269,7 @@
 
            autocomplete.addListener('place_changed', onPlaceChanged);
 
+
          }
 
          // When the user selects a city, get the place details for the city and
@@ -280,11 +291,12 @@
              bounds: map.getBounds(),
              types: ['cafe']
            };
-
+		   
            places.nearbySearch(search, function(results, status) {
              if (status === google.maps.places.PlacesServiceStatus.OK) {
                clearResults();
                clearMarkers();
+			   var data = [];
                // Create a marker for each hotel found, and
                // assign a letter of the alphabetic to each marker icon.
                for (var i = 0; i < results.length; i++) {
@@ -302,9 +314,29 @@
                  google.maps.event.addListener(markers[i], 'click', showInfoWindow);
                  setTimeout(dropMarker(i), i * 100);
                  addResult(results[i], i);
+				 
+				 if(results[i].hasOwnProperty("rating")){
+				 data[i] = results[i].rating;
+				 }
+				 else{
+				 data[i] = 0;
+				 
+				 }
+				 
+				 
                }
+			   i = -1;
+
+			   d3.select(".chart")
+				.selectAll("div")
+					.data(data)
+				.enter().append("div")
+					.style("width", function(d) 
+						{ return d * 100 + "px"; })
+						.text(function(d) { i ++; return "(" + String.fromCharCode('A'.charCodeAt(0) + i) + ") "+ d; });
              }
            });
+
          }
 
          function clearMarkers() {
@@ -366,6 +398,7 @@
                  infoWindow.open(map, marker);
                  buildIWContent(place);
                });
+
          }
 
          // Load the place information into the HTML elements used by the info window.
@@ -416,6 +449,8 @@
            } else {
              document.getElementById('iw-website-row').style.display = 'none';
            }
+		   
+		   
          }
      </script>
    </body>
