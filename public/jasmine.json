@@ -1,0 +1,11 @@
+{
+  "spec_dir": "public",
+  "spec_files": [
+    "newIndex.html"
+  ],
+  "helpers": [
+
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": false
+}
