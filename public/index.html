@@ -1,61 +1,466 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="coffeeApp">
-<head>
-    <meta charset="utf-8">
-    <title>INDEX</title>
-    <link rel="shortcut icon" href="">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
-    <script src="script.js"></script>
+   <head>
+      <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width">
+      <title>COFFEE SHOP</title>
+      <link rel="shortcut icon" href="">
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-   <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+      <script src="https://fb.me/react-15.0.0.js"></script>
+
+      <script src="https://fb.me/react-with-addons-15.1.0.js"></script>
+      <script src="https://fb.me/react-dom-15.0.0.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+      <script src="https://npmcdn.com/react-router/umd/ReactRouter.min.js"></script>
 
 
-<body ng-controller="mainController">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkjontohFR_ceeDYiKFcoSjNGqN-sNVCc&libraries=places"></script>
-  <script src="app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+      <script src="https://cdn.firebase.com/libs/reactfire/1.0.0/reactfire.min.js"></script>
 
-<div class="main">
-    <div ng-view></div>
-</div>
-<footer> <strong>SWE 432 - Ellen Nkonya & Laura Braun</strong></footer>
-<script>
-  "use strict";
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyD9xeq34gctsKfIajyTC7DRo1o13knB-zU",
-      authDomain: "coffeestop-820c3.firebaseapp.com",
-      databaseURL: "https://coffeestop-820c3.firebaseio.com",
-      storageBucket: "coffeestop-820c3.appspot.com",
-      messagingSenderId: "282398477281"
-    };
-    firebase.initializeApp(config);
-      var ref = firebase.database().ref("users");
 
-    function registerUser(){
-          var email = $("#userEmail").val();
-          var password = $("#userPassword").val();
-          var firstName = $("#firstName").val();
+      <link rel="stylesheet" type="text/css" href="../jasmine/lib/jasmine-2.5.2/jasmine.css">
+      <script type="text/javascript" src="../jasmine/lib/jasmine-2.5.2/jasmine.js"></script>
+      <script type="text/javascript" src="../jasmine/lib/jasmine-2.5.2/jasmine-html.js"></script>
+      <script type="text/javascript" src="../jasmine/lib/jasmine-2.5.2/boot.js"></script>
 
-          firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
-              ref.push({
-                id: user.uid,
-                name: firstName
-              });
+      <script type="text/javascript" src="CoffeeSpec.js"></script>
 
-              alert("Welcome, " + firstName + "!");
-          }), function(error){
+	    <script src="https://d3js.org/d3.v4.min.js"></script>
 
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(errorMessage);
+      <link rel="stylesheet" type="text/css" href="style.css">
+   </head>
+   <body>
+
+
+      <div id="main"></div>
+
+
+      <script>
+        "use strict";
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyD9xeq34gctsKfIajyTC7DRo1o13knB-zU",
+            authDomain: "coffeestop-820c3.firebaseapp.com",
+            databaseURL: "https://coffeestop-820c3.firebaseio.com",
+            storageBucket: "coffeestop-820c3.appspot.com",
+            messagingSenderId: "282398477281"
           };
-    };
-</script>
-</body>
+          firebase.initializeApp(config);
+            var ref = firebase.database().ref("users");
+
+          function registerUser(){
+                var email = $("#userEmail").val();
+                var password = $("#userPassword").val();
+                var firstName = $("#firstName").val();
+
+                firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
+                    ref.push({
+                      id: user.uid,
+                      name: firstName
+                    });
+
+                    alert("Welcome, " + firstName + "!");
+                }), function(error){
+
+                  var errorCode = error.code;
+                  var errorMessage = error.message;
+                  alert(errorMessage);
+                };
+          };
+      </script>
+      <script type="text/babel">
+         var destination = document.querySelector("#main");
+         var {
+           Router,
+           Route,
+           IndexRoute,
+           IndexLink,
+           Link } = ReactRouter;
+
+           var Home = React.createClass({
+             render: function() {
+               return (
+               <div>
+                <div className="homepageSearch">
+                  <input name="homepageSearch" id="searching" placeholder="Enter your address, city/state, or zipcode.." />
+                  <Link to="/search"><button className="nearMe">Find coffee near me</button></Link>
+               </div>
+               </div>
+             );
+           }
+         });
+
+         var LoginRegister = React.createClass({
+           render: function() {
+               return (
+                 <div className="content">
+                     <Login/>
+                     <Register/>
+                 </div>
+               );
+             }
+         });
+
+         var Login = React.createClass({
+           render: function() {
+               return (
+                 <div>
+                 <p>L O G I N</p>
+                   <form name="login" className="login">
+                     <input  type="email" name="email" placeholder="Email Address"/>
+                     <input  type="password" name="password" placeholder="Password"/>
+                     <button>Sign in</button>
+                   </form>
+                 </div>
+               );
+             }
+         });
+
+         var Register =  React.createClass({
+            render: function() {
+                return (
+                  <div>
+                  <p>R E G I S T E R</p>
+                  <form name="registration" id="registration">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName"/>
+
+                            <label for="email">Email</label>
+                            <input type="email" id="userEmail" name="email"/>
+                            <div class="error">Please enter a valid email</div>
+
+                            <label for="password">Password (between 6-12 characters)</label>
+                            <input type="password" id="userPassword" name="password" pattern="[^\s]{6,12}$" title="6-12 character password"/>
+                            <div class="error">Your password must be between 6-12 characters</div>
+                    <button onclick="registerUser()" id="register">Join Now</button>
+                  </form>
+                  </div>
+                );
+              }
+          });
+
+         var Search = React.createClass({
+           render: function() {
+               return (
+                 <div className="content">
+                     <p>SEARCH RESULTS</p>
+                     <div id="locationField">
+                     <input id="autocomplete" placeholder="Enter an address" type="text" />
+                     </div>
+
+                     <div id="map"></div>
+
+                     <div id="listing">
+                     <table id="resultsTable">
+                       <tbody id="results"></tbody>
+                     </table>
+                     </div>
+
+                     <div>
+                     <div id="info-content">
+                       <table>
+                       <tbody>
+                         <tr id="iw-url-row" class="iw_table_row">
+                           <td id="iw-icon" class="iw_table_icon"></td>
+                           <td id="iw-url"></td>
+                         </tr>
+                         <tr id="iw-address-row" class="iw_table_row">
+                           <td class="iw_attribute_name">Address:</td>
+                           <td id="iw-address"></td>
+                         </tr>
+                         <tr id="iw-phone-row" class="iw_table_row">
+                           <td class="iw_attribute_name">Telephone:</td>
+                           <td id="iw-phone"></td>
+                         </tr>
+                         <tr id="iw-rating-row" class="iw_table_row">
+                           <td class="iw_attribute_name">Rating:</td>
+                           <td id="iw-rating"></td>
+                         </tr>
+                         <tr id="iw-website-row" class="iw_table_row">
+                           <td class="iw_attribute_name">Website:</td>
+                           <td id="iw-website"></td>
+                         </tr>
+                        </tbody>
+                       </table>
+                     </div>
+                     </div>
+					 <p> Ratings </p>
+					 <div className="chart"></div>
+
+                 </div>
+
+               );
+             }
+         });
+
+         var App = React.createClass({
+           render: function() {
+             return (
+               <div>
+               <header><Link to="/">COFFEE STOP</Link>
+                 <div id="options">
+                 <Link to="/login-register"><button>LOG-IN/SIGN-UP</button></Link>
+                 </div>
+               </header>
+
+                 <div className="mainArea">
+                   {this.props.children}
+                 </div>
+                 <footer> <strong>SWE 432 - Ellen Nkonya & Laura Braun</strong></footer>
+               </div>
+             )
+           }
+         });
+
+         ReactDOM.render(
+         <Router>
+           <Route path="/" component={App}>
+               <IndexRoute component={Home}/>
+               <Route path="login-register" component={LoginRegister} />
+               <Route path="search" component={Search} />
+           </Route>
+         </Router>,
+         destination
+         );
+
+      </script>
+
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF9KYCmkJ-TfR0npZmnfvjRfMlNKJK1pk&libraries=places&callback=initMap"
+         async defer></script>
+         <script>
+
+         var res_length = 0;
+
+       //code for the rest of this script was inspired from google maps hotel
+       //search api... can be found:
+       //https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-hotelsearch
+         var map, places, infoWindow;
+         var markers = [];
+         var autocomplete;
+         var MARKER_PATH = 'https://maps.gstatic.com/intl/en_us/mapfiles/marker_green'
+         var hostnameRegexp = new RegExp('^https?://.+?/');
+
+          function initMap() {
+           map = new google.maps.Map(document.getElementById('map'), {
+             zoom: 3,
+             center:  {lat: 37.1, lng: -95.7},
+             mapTypeControl: false,
+             panControl: false,
+             zoomControl: false,
+             streetViewControl: false
+           });
+
+           infoWindow = new google.maps.InfoWindow({
+             content: document.getElementById('info-content')
+           });
+
+           // Create the autocomplete object and associate it with the UI input control.
+           // Restrict the search to the default country, and to place type "cities".
+           autocomplete = new google.maps.places.Autocomplete(
+               /** @type {!HTMLInputElement} */ (
+                   document.getElementById('autocomplete'))
+                   );
+           places = new google.maps.places.PlacesService(map);
+
+           autocomplete.addListener('place_changed', onPlaceChanged);
+
+
+         }
+
+         // When the user selects a city, get the place details for the city and
+         // zoom the map in on the city.
+         function onPlaceChanged() {
+           var place = autocomplete.getPlace();
+           if (place.geometry) {
+             map.panTo(place.geometry.location);
+             map.setZoom(15);
+             search();
+           } else {
+             document.getElementById('autocomplete').placeholder = 'Enter a city';
+           }
+         }
+
+         // Search for hotels in the selected city, within the viewport of the map.
+         function search() {
+           var search = {
+             bounds: map.getBounds(),
+             types: ['cafe']
+           };
+
+           places.nearbySearch(search, function(results, status) {
+              res_length = results.length;
+
+             if (status === google.maps.places.PlacesServiceStatus.OK) {
+               clearResults();
+               clearMarkers();
+			   var data = [];
+               // Create a marker for each hotel found, and
+               // assign a letter of the alphabetic to each marker icon.
+               for (var i = 0; i < results.length; i++) {
+                 var markerLetter = String.fromCharCode('A'.charCodeAt(0) + i);
+                 var markerIcon = MARKER_PATH + markerLetter + '.png';
+                 // Use marker animation to drop the icons incrementally on the map.
+                 markers[i] = new google.maps.Marker({
+                   position: results[i].geometry.location,
+                   animation: google.maps.Animation.DROP,
+                   icon: markerIcon
+                 });
+                 // If the user clicks a hotel marker, show the details of that hotel
+                 // in an info window.
+                 markers[i].placeResult = results[i];
+                 google.maps.event.addListener(markers[i], 'click', showInfoWindow);
+                 setTimeout(dropMarker(i), i * 100);
+                 addResult(results[i], i);
+
+				 if(results[i].hasOwnProperty("rating")){
+				 data[i] = results[i].rating;
+				 }
+				 else{
+				 data[i] = 0;
+
+				 }
+
+
+               }
+			   i = -1;
+
+			   d3.select(".chart")
+    				.selectAll("div")
+    					.data(data)
+    				.enter().append("div")
+    					.style("width", function(d)
+    						{ return d * 100 + "px"; })
+    						.text(function(d) { i ++; return "(" + String.fromCharCode('A'.charCodeAt(0) + i) + ") "+ d; });
+                 }
+               });
+
+         }
+
+         function clearMarkers() {
+           for (var i = 0; i < markers.length; i++) {
+             if (markers[i]) {
+               markers[i].setMap(null);
+             }
+           }
+           markers = [];
+         }
+
+         function dropMarker(i) {
+           return function() {
+             markers[i].setMap(map);
+           };
+         }
+
+         function addResult(result, i) {
+           var results = document.getElementById('results');
+           var markerLetter = String.fromCharCode('A'.charCodeAt(0) + i);
+           var markerIcon = MARKER_PATH + markerLetter + '.png';
+
+           var tr = document.createElement('tr');
+           tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
+           tr.onclick = function() {
+             google.maps.event.trigger(markers[i], 'click');
+           };
+
+           var iconTd = document.createElement('td');
+           var nameTd = document.createElement('td');
+           var icon = document.createElement('img');
+           icon.src = markerIcon;
+           icon.setAttribute('class', 'placeIcon');
+           icon.setAttribute('className', 'placeIcon');
+           var name = document.createTextNode(result.name);
+           iconTd.appendChild(icon);
+           nameTd.appendChild(name);
+           tr.appendChild(iconTd);
+           tr.appendChild(nameTd);
+           results.appendChild(tr);
+         }
+
+         function clearResults() {
+           var results = document.getElementById('results');
+           while (results.childNodes[0]) {
+             results.removeChild(results.childNodes[0]);
+           }
+         }
+
+         // Get the place details for a hotel. Show the information in an info window,
+         // anchored on the marker for the hotel that the user selected.
+         function showInfoWindow() {
+           var marker = this;
+           places.getDetails({placeId: marker.placeResult.place_id},
+               function(place, status) {
+                 if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                   return;
+                 }
+                 infoWindow.open(map, marker);
+                 buildIWContent(place);
+               });
+
+         }
+
+         // Load the place information into the HTML elements used by the info window.
+         function buildIWContent(place) {
+           document.getElementById('iw-icon').innerHTML = '<img class="coffeeIcon" ' +
+               'src="' + place.icon + '"/>';
+           document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
+               '">' + place.name + '</a></b>';
+           document.getElementById('iw-address').textContent = place.vicinity;
+
+           if (place.formatted_phone_number) {
+             document.getElementById('iw-phone-row').style.display = '';
+             document.getElementById('iw-phone').textContent =
+                 place.formatted_phone_number;
+           } else {
+             document.getElementById('iw-phone-row').style.display = 'none';
+           }
+
+           // Assign a five-star rating to the hotel, using a black star ('&#10029;')
+           // to indicate the rating the hotel has earned, and a white star ('&#10025;')
+           // for the rating points not achieved.
+           if (place.rating) {
+             var ratingHtml = '';
+             for (var i = 0; i < 5; i++) {
+               if (place.rating < (i + 0.5)) {
+                 ratingHtml += '&#10025;';
+               } else {
+                 ratingHtml += '&#10029;';
+               }
+             document.getElementById('iw-rating-row').style.display = '';
+             document.getElementById('iw-rating').innerHTML = ratingHtml;
+             }
+           } else {
+             document.getElementById('iw-rating-row').style.display = 'none';
+           }
+
+           // The regexp isolates the first part of the URL (domain plus subdomain)
+           // to give a short URL for displaying in the info window.
+           if (place.website) {
+             var fullUrl = place.website;
+             var website = hostnameRegexp.exec(place.website);
+             if (website === null) {
+               website = 'http://' + place.website + '/';
+               fullUrl = website;
+             }
+             document.getElementById('iw-website-row').style.display = '';
+             document.getElementById('iw-website').textContent = website;
+           } else {
+             document.getElementById('iw-website-row').style.display = 'none';
+           }
+         }
+
+
+
+
+
+
+
+
+
+
+     </script>
+   </body>
 </html>
