@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "coffeestop-820c3",
+  "private_key_id": "d148ca556c57650c575de7863a0261d72f0d1c13",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQD3cegACG8cojTB\nugAskzLp6yaNU/WOhkm3+K5cS9+qC1UqnhavwqESLC3e1ZJNe5Yrir1TP34jOWSF\nV8uhyhgCGyjekbN7dPEYyZH5QrTCoGVQEX/nXMgKJ/uh/JtsqjEe/CGQ6PwI/j9x\nCkGcNEQka7SsiZuu84i7hBQaO4piB3JSM50bg3AhdxSeT72rpQECGk3MtUu17JZk\nQLInE19mLL1HTGODPKgsrZHiDsB85lacjZvbxbTriVbsI6u5Gt6+y5AL21SPKUlH\nJQr5DC8wxR9j2g3SH9ioCPddCD+Y7eXnqiRXLQ3zutZffJpZvYzDsaeTuDUvWVMj\noCQ+3wDnAgMBAAECggEBANIFSx3kCrLp9g9L2OP8mCU04obn8S7kSeOtXgiWmaNR\ndRr0DVtmvaGX/+L3sPK059PTMThcVqp9BxWqW/rZdiErfjfSwN0Td6NLSuues5/R\n1cvs3nu4I02DfC+UITNNDN44sCC3r1vOuHgwdVmofwHOrQ4YyhvnNnG5+/n7+UuT\nTTLwAainRht4YX7JQB500bVp/SG7OVFIB3DkuPsNZRIif632pfPutEnLPB9v0K/x\n0HjELsVhhTVtrOkR29YYxS+xHRhWmhvtP7NFfbVEgAnCGY4m4Q3s1+kIArV/yBER\nnQYDlgxLQswwdENtenJ4xo33ZzJM5zuhaoENlW/uYUECgYEA/RoLowLepYpgTUEW\nnWoE4DcT3tlh/LZDlnbznNgE9SXp/rUKt8pEP8KzuExfwoHV8WX8j1DvTvarqdQ/\nfX2QErs+c8J+hrrc9vPpERPlbRqGWmHW/aKK9IeCTBnFoQQrJHPz3W1PYnssqApe\nh6Cx2dx+da+ov8YNO7e6+YWZcccCgYEA+kdHOAaSLScxOmDOC8OOcgyc9z4jTpKs\nOPoNnT3oF3C6nYsgSoQLy85wzM0ZeUapsJAldbSoIj5u8cv9/F8+Xbk23rYF4RsN\nKqpI76ksiFYyh97VwfxCADS4mGoIKxag4fkjN21yg+huJbL/+ZqfsqH92EqD4RVB\n2KUIHAft9+ECgYEAkmRIKsb0JGd+//APtoilvVHeCl1Nka+SNCslCKjhZTHCv/HS\n+y7gfsiMzqJOGOCj7/X/OJ2lbNS7wYTkHB9N/6eRnb73E9JtD+FQAvKxFoPrBcfl\nY9pp6LmgIYgeiN0yXuk6Oe6Jpfp8f81Pk77cX5hrBILPZeyVpt7EJKKjd+0CgYA7\nosBVmTs7hxszzd1K8E4A3wCH6UaAcnKXIP4deaLT8wiEgaIwH0awSYCXTEfFnhDR\nAYfrhCCMCFRnSTQ77nXt3zQz3SuJd+irQegfMzBpTCC+P1qv3mvboLRbnOhVXA75\nyWOa0Xl39OpKEVztHOrwpajW4OqLt4T5GlnUVA9gAQKBgHG9sRetCuTc8/hc25Xw\nG1VgtUdPOf7ezFgtCy8M0TRbMwv9GU9NyEnYpPYhIcrquqU3OvX/YFrhytji/ZYX\n4oxz8q7IA62GQehssQg3otkUahR3iaoMMvgDx9PEUGTbwLULxinuXpLz9oprGVJi\nPp7Xdaed7JYXNTD62B+/HkUs\n-----END PRIVATE KEY-----\n",
+  "client_email": "coffeestop@coffeestop-820c3.iam.gserviceaccount.com",
+  "client_id": "114304210702331662430",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/coffeestop%40coffeestop-820c3.iam.gserviceaccount.com"
+}

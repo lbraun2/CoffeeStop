@@ -1,27 +1,17 @@
 {
   "name": "CoffeeStop",
   "version": "1.0.0",
-  "description": "Look 4 Coffee",
-  "engines": {
-    "node": "5.9.1"
-  },
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "ejs": "2.4.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "firebase": "^3.4.1",
-    "express": "4.13.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lbraun2/CoffeeStop"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+    "nodemon": "^1.11.0"
+  }
 }
