@@ -29,22 +29,22 @@ describe("Map", function() {
              zoomControl: false,
              streetViewControl: false
            });
-		   
+
 		   places = new google.maps.places.PlacesService(map);
-		   
+
 		   var search = {
              bounds: map.getBounds(),
              types: ['cafe']
            };
-		   
+
 		   places.nearbySearch(search, function(results, status) {
 		     status_return = status;
-		   }
+		   
 		   });
 	   it("has a OK return status"), function(){
 	     expect(status_return).toEqual(google.maps.places.PlacesServiceStatus.OK);
 	   }
-		   
-		   
+
+
 
 });
