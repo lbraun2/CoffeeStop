@@ -21,6 +21,8 @@ header{
   z-index: 1;
 }
 
+#header{display: none;}
+
 footer{
   text-align: center;
   position:relative;
@@ -38,24 +40,6 @@ input{
 label{
   display: block;
 }
-/*
-table{
-  width: 50%;
-  height: auto;
-  margin: 0 auto;
-  border-collapse: collapse;
-}
-
-tr{
-  opacity: 0.85;
-  border-bottom: 1px solid #4CAF50;
-}
-
-td{
-  padding-top: 10px;
-  height: 150px;
-  padding-bottom: 10px;
-} */
 
 tr:hover{
   border-bottom: 1px solid white;
@@ -181,19 +165,21 @@ h5{
   float:right;
 }
 
-.homepageSearch input{
-  width: 25%;
-  height: 60px;
-  background-color: black;
+.homepageSearch{
   font-size: 15px;
   border-radius: 10px;
   padding: 10px;
   opacity: 0.60;
-  margin-left: 37%;
+  margin-left: 40%;
   margin-bottom: 15%;
   margin-top: 22%;
   color: white;
   transition: 0.5s ease-in;
+}
+
+.homepageSearch button{
+  width: 25%;
+  height: 60px;
 }
 
 .homepageSearch input:focus{
