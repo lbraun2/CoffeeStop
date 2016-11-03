@@ -8,10 +8,8 @@
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
       <script src="https://fb.me/react-15.0.0.js"></script>
-
       <script src="https://fb.me/react-with-addons-15.1.0.js"></script>
       <script src="https://fb.me/react-dom-15.0.0.js"></script>
-
       <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
       <script src="https://npmcdn.com/react-router/umd/ReactRouter.min.js"></script>
 
@@ -32,10 +30,7 @@
       <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
-
-
       <div id="main"></div>
-
       <script>
         "use strict";
           // Initialize Firebase
@@ -70,19 +65,20 @@
                   var errorMessage = error.message;
                   alert(errorMessage);
                 };
-          };
+          }; 
       </script>
       <script type="text/babel">
-         var destination = document.querySelector("#main");
          var {
            Router,
            Route,
            IndexRoute,
+           browserHistory,
            IndexLink,
            Link } = ReactRouter;
 
            var Home = React.createClass({
              render: function() {
+               console.log("hi");
                return (
                <div>
                 <div className="homepageSearch">
@@ -198,7 +194,7 @@
          });
 
          var App = React.createClass({
-           //mixins: [ReactFireMixin],
+           mixins: [ReactFireMixin],
            render: function() {
              return (
                <div>
@@ -208,25 +204,24 @@
                  </div>
                </header>
 
-                 <div className="mainArea">
-                   {this.props.children}
-                 </div>
-                 <footer> <strong>SWE 432 - Ellen Nkonya & Laura Braun</strong></footer>
+                 <div className="mainArea">{this.props.children}</div>
+                 <footer><strong>SWE 432 - Ellen Nkonya & Laura Braun</strong></footer>
                </div>
              )
            }
          });
 
          ReactDOM.render(
-         <Router>
+         <Router history={browserHistory}>
            <Route path="/" component={App}>
                <IndexRoute component={Home}/>
-               <Route path="login-register" component={LoginRegister} />
-               <Route path="search" component={Search} />
+              <Route path="login-register" component={LoginRegister} />
+              <Route path="search" component={Search} />
            </Route>
          </Router>,
-         destination
+         document.getElementById("main")
          );
+
 
       </script>
 
