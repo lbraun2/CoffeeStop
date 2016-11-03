@@ -40,24 +40,6 @@ input{
 label{
   display: block;
 }
-/*
-table{
-  width: 50%;
-  height: auto;
-  margin: 0 auto;
-  border-collapse: collapse;
-}
-
-tr{
-  opacity: 0.85;
-  border-bottom: 1px solid #4CAF50;
-}
-
-td{
-  padding-top: 10px;
-  height: 150px;
-  padding-bottom: 10px;
-} */
 
 tr:hover{
   border-bottom: 1px solid white;
