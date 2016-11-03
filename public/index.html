@@ -18,7 +18,14 @@
       <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
       <script src="https://cdn.firebase.com/libs/reactfire/1.0.0/reactfire.min.js"></script>
 
-      <script src="https://d3js.org/d3.v4.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css" />
+
+      <script src="https://d3js.org/d3.v4.min.js">
+
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF9KYCmkJ-TfR0npZmnfvjRfMlNKJK1pk&libraries=places&callback=initMap"
+         async defer></script>
+       </script>
 
     <!--  <link rel="stylesheet" type="text/css" href="../jasmine/lib/jasmine-2.5.2/jasmine.css">
       <script type="text/javascript" src="../jasmine/lib/jasmine-2.5.2/jasmine.js"></script>
@@ -30,6 +37,9 @@
       <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
+
+
+
       <div id="main"></div>
       <script>
         "use strict";
@@ -43,29 +53,55 @@
           };
           firebase.initializeApp(config);
 
-          var ref = firebase.database().ref("users");
+          var userName;
 
-          function registerUser(){
-                var email = $("#userEmail").val();
-                var password = $("#userPassword").val();
-                var firstName = $("#firstName").val();
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            $("#firebaseui-auth-container").hide();
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            userName = user.uid;
 
-                 $.post("http://localhost:3000/newUser",{ todoText: email});
+            var providerData = user.providerData;
+            $("#header").show();
+            $("#login-reg").hide();
 
-                firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
-                    ref.push({
-                      id: user.uid,
-                      name: firstName
-                    });
+            user.getToken().then(function(accessToken) {
+                document.getElementById('sign-in-status').textContent = "Welcome, " + displayName;
+            });
+        } else {
+            console.log("Signed out");
+            // User is signed out.
+            $("#header").hide();
+            $("#login-reg").show();
 
-                    alert("Welcome, " + firstName + "!");
-                }), function(error){
+            // FirebaseUI config.
+            var uiConfig = {
+                'signInSuccessUrl': '/', //URL that we get sent BACK to after logging in
+                'signInOptions': [
+                    // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+//            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+//            firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+//            firebase.auth.GithubAuthProvider.PROVIDER_ID,
+//                    firebase.auth.EmailAuthProvider.PROVIDER_ID
+                ],
+                // Terms of service url.
+                'tosUrl': '<your-tos-url>',
+            };
 
-                  var errorCode = error.code;
-                  var errorMessage = error.message;
-                  alert(errorMessage);
-                };
-          }; 
+            // Initialize the FirebaseUI Widget using Firebase.
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            // The start method will wait until the DOM is loaded.
+            ui.start('#firebaseui-auth-container', uiConfig);
+        }
+    }, function(error) {
+        console.log(error);
+      });
       </script>
       <script type="text/babel">
          var {
@@ -78,12 +114,10 @@
 
            var Home = React.createClass({
              render: function() {
-               console.log("hi");
                return (
                <div>
                 <div className="homepageSearch">
-                  <input name="homepageSearch" id="searching" placeholder="Enter your address, city/state, or zipcode.." />
-                  <Link to="/search"><button className="nearMe">Find coffee near me</button></Link>
+                  <Link to="/search"><button>Find coffee near me</button></Link>
                </div>
                </div>
              );
@@ -94,50 +128,11 @@
            render: function() {
                return (
                  <div className="content">
-                     <Login/>
-                     <Register/>
+                    <div id="firebaseui-auth-container"></div>
                  </div>
                );
              }
          });
-
-         var Login = React.createClass({
-           render: function() {
-               return (
-                 <div>
-                 <p>L O G I N</p>
-                   <form name="login" className="login">
-                     <input  type="email" name="email" placeholder="Email Address"/>
-                     <input  type="password" name="password" placeholder="Password"/>
-                     <button>Sign in</button>
-                   </form>
-                 </div>
-               );
-             }
-         });
-
-         var Register =  React.createClass({
-            render: function() {
-                return (
-                  <div>
-                  <p>R E G I S T E R</p>
-                  <form name="registration" id="registration">
-                            <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" name="firstName"/>
-
-                            <label for="email">Email</label>
-                            <input type="email" id="userEmail" name="email"/>
-                            <div class="error">Please enter a valid email</div>
-
-                            <label for="password">Password (between 6-12 characters)</label>
-                            <input type="password" id="userPassword" name="password" pattern="[^\s]{6,12}$" title="6-12 character password"/>
-                            <div class="error">Your password must be between 6-12 characters</div>
-                    <button onclick="registerUser()" id="register">Join Now</button>
-                  </form>
-                  </div>
-                );
-              }
-          });
 
          var Search = React.createClass({
            render: function() {
@@ -200,7 +195,11 @@
                <div>
                <header><Link to="/">COFFEE STOP</Link>
                  <div id="options">
-                 <Link to="/login-register"><button>LOG-IN/SIGN-UP</button></Link>
+                 <div id="header">
+                    <span id="sign-in-status"></span> | <a href="javascript:firebase.auth().signOut()">Sign Out</a>
+                </div>
+
+                 <div id='login-reg'><Link to="/login-register"><button>LOG-IN/SIGN-UP</button></Link></div>
                  </div>
                </header>
 
@@ -221,12 +220,7 @@
          </Router>,
          document.getElementById("main")
          );
-
-
       </script>
-
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF9KYCmkJ-TfR0npZmnfvjRfMlNKJK1pk&libraries=places&callback=initMap"
-         async defer></script>
       <script type="text/javascript" src="gmaps.js"></script>
    </body>
 </html>
