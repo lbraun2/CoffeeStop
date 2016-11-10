@@ -58,7 +58,6 @@ function search() {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       clearResults();
       clearMarkers();
-var data = [];
       // Create a marker for each hotel found, and
       // assign a letter of the alphabetic to each marker icon.
       for (var i = 0; i < results.length; i++) {
@@ -77,28 +76,38 @@ var data = [];
         setTimeout(dropMarker(i), i * 100);
         addResult(results[i], i);
 
-if(results[i].hasOwnProperty("rating")){
-data[i] = results[i].rating;
-}
-else{
-data[i] = 0;
-
-}
-
-
       }
-i = -1;
+      displayRatings(results);
+      }
+    });
 
-d3.select(".chart")
-   .selectAll("div")
-     .data(data)
-   .enter().append("div")
-     .style("width", function(d)
-       { return d * 100 + "px"; })
-       .text(function(d) { i ++; return "(" + String.fromCharCode('A'.charCodeAt(0) + i) + ") "+ d; });
-        }
-      });
 
+
+}
+
+function displayRatings(results){
+  var data = [];
+  var i;
+
+for (i = 0; i < results.length; i++) {
+  if(results[i].hasOwnProperty("rating")){
+  data[i] = results[i].rating;
+
+  }
+  else{
+  data[i] = 0;
+  }
+}
+  d3.select(".chart").selectAll("div").remove()
+
+  i = 0;
+  d3.select(".chart")
+     .selectAll("div")
+       .data(data)
+     .enter().append("div")
+       .style("width", function(d)
+         { return d * 100 + "px"; })
+         .text(function(d) { i++; return "(" + String.fromCharCode('A'.charCodeAt(0) + i) + ") "+ d; });
 }
 
 function clearMarkers() {
