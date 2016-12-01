@@ -12,10 +12,9 @@ Ellen Nkonya and Laura Braun
 
 4. **Search Result Details**: In the map or on the search results on the side, the user is able to click on the different locations and view certain details of the shops: ratings, address, hours, etc.
 
-https://git.heroku.com/swe432coffeestop.git
+https://swe432coffeestop.herokuapp.com/
 
 For HW8, The three scenarios we would like to be tested are:
   1. Registration/Login
   2. Rating Visualization
   3. Search Result Details
-**Please note that the search page and the log-in/register page dont work on the SPA unless the page is reloaded**

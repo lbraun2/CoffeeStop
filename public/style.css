@@ -21,6 +21,12 @@ header{
   z-index: 1;
 }
 
+header img{
+  height:100%;
+  width: 150px;
+}
+
+
 #header{display: none;}
 
 footer{
@@ -52,7 +58,7 @@ img{
 }
 
 img:hover{
-  transform: scale(1.2);
+  transform: scale(1.0);
   transition: 0.5s ease-in-out;
 }
 
@@ -63,11 +69,24 @@ button{
 
 .content{
   padding: 30px;
-  width: 60%;
+  width: 90%;
   margin: 0 auto;
   margin-top: 10%;
   margin-bottom: 30px;
   min-height: 500px;
+  background-color: black;
+  opacity: 0.75;
+  position: relative;
+}
+
+
+.content_log{
+  padding: 20px;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 10%;
+  margin-bottom: 30px;
+  height: 200px;
   background-color: black;
   opacity: 0.75;
   position: relative;
@@ -89,6 +108,7 @@ button{
 .chart div {
   font: 10px sans-serif;
   background-color: steelblue;
+  width: 10%;
   text-align: right;
   padding: 3px;
   margin: 1px;
@@ -209,19 +229,20 @@ td{
   background: transparent;
 }
 #map {
-  width: 60%;
+  width: 50%;
   height: 500px;
 }
 #listing {
   position: absolute;
-  width: 300px;
+  width: 50%;
   height: 500px;
   overflow: auto;
-  left: 500px;
-  top: 155px;
+  left: 55%;
+  top: 130px;
   float: right;
   cursor: pointer;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 #locationField {
@@ -233,7 +254,7 @@ td{
 }
 
 #autocomplete {
-  width: 100%;
+  width: 80%;
   margin-top: 150px;
 }
 
@@ -246,12 +267,18 @@ td{
   width: 24px;
   height: 24px;
 }
+
 #resultsTable {
   margin: 0 auto;
-  color: red;
   border-collapse: collapse;
   width: 240px;
+  left: -50;
 }
+
+.chart{
+  position: absolute;
+}
+
 td{
   margin: 10px 10px 10px 10px;
   color:black;
