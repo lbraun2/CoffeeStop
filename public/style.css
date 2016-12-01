@@ -21,6 +21,12 @@ header{
   z-index: 1;
 }
 
+header img{
+  height:100%;
+  width: 150px;
+}
+
+
 #header{display: none;}
 
 footer{
@@ -52,7 +58,7 @@ img{
 }
 
 img:hover{
-  transform: scale(1.2);
+  transform: scale(1.0);
   transition: 0.5s ease-in-out;
 }
 
@@ -68,6 +74,19 @@ button{
   margin-top: 10%;
   margin-bottom: 30px;
   min-height: 500px;
+  background-color: black;
+  opacity: 0.75;
+  position: relative;
+}
+
+
+.content_log{
+  padding: 20px;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 10%;
+  margin-bottom: 30px;
+  height: 200px;
   background-color: black;
   opacity: 0.75;
   position: relative;

@@ -34,75 +34,10 @@
       <script type="text/javascript" src="CoffeeSpec.js"></script> -->
 
       <link rel="stylesheet" type="text/css" href="style.css">
+      <script type="text/javascript" src="fbLogin.js"></script>
    </head>
    <body>
       <div id="main"></div>
-
-      <script>
-        "use strict";
-          // Initialize Firebase
-
-          var config = {
-            apiKey: "AIzaSyD9xeq34gctsKfIajyTC7DRo1o13knB-zU",
-            authDomain: "coffeestop-820c3.firebaseapp.com",
-            databaseURL: "https://coffeestop-820c3.firebaseio.com",
-            storageBucket: "coffeestop-820c3.appspot.com",
-            messagingSenderId: "282398477281"
-          };
-          firebase.initializeApp(config);
-          var userName;
-
-          function initFirebase(){}
-
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            $("#firebaseui-auth-container").hide();
-            // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            userName = user.uid;
-
-            var providerData = user.providerData;
-            $("#header").show();
-            $("#login-reg").hide();
-
-            user.getToken().then(function(accessToken) {
-                document.getElementById('sign-in-status').textContent = "Welcome, " + displayName;
-            });
-        } else {
-            console.log("Signed out");
-            // User is signed out.
-            $("#header").hide();
-            $("#login-reg").show();
-
-            // FirebaseUI config.
-            var uiConfig = {
-                'signInSuccessUrl': '/', //URL that we get sent BACK to after logging in
-                'signInOptions': [
-                    // Leave the lines as is for the providers you want to offer your users.
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-//            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-//            firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-//            firebase.auth.GithubAuthProvider.PROVIDER_ID,
-//            firebase.auth.EmailAuthProvider.PROVIDER_ID
-                ],
-                // Terms of service url.
-                'tosUrl': '<your-tos-url>',
-            };
-
-            // Initialize the FirebaseUI Widget using Firebase.
-            var ui = new firebaseui.auth.AuthUI(firebase.auth());
-            // The start method will wait until the DOM is loaded.
-            ui.start('#firebaseui-auth-container', uiConfig);
-        }
-    }, function(error) {
-        console.log(error);
-      });
-
-      </script>
       <script type="text/babel">
          var {
            Router,
@@ -125,17 +60,16 @@
          });
 
          var LoginRegister = React.createClass({
-           componentDidMount: function(){
-             window.initFirebase();
-           },
            render: function() {
                return (
-                 <div className="content">
+                <div className="content_log">
+                    <p>Welcome! Login/Register Below</p>
                     <div id="firebaseui-auth-container"></div>
                  </div>
                );
              }
          });
+
 
          var Search = React.createClass({
            componentDidMount: function(){
@@ -195,22 +129,17 @@
          });
 
          var App = React.createClass({
-
            mixins: [ReactFireMixin],
-           componentDidMount: function(){
-             window.initFirebase();
-           },
-
            render: function() {
              return (
                <div>
-               <header><Link to="/">COFFEE STOP</Link>
+               <header><Link to="/"><img src = 'coffeestop.png'></img></Link>
                  <div id="options">
                  <div id="header">
                     <span id="sign-in-status"></span> | <a href="javascript:firebase.auth().signOut()">Sign Out</a>
                 </div>
 
-                 <div id='login-reg'><Link to="/login-register"><button>LOG-IN/SIGN-UP</button></Link></div>
+                <div id='login-reg'><a href="/login-register"><button>LOG-IN/SIGN-UP</button></a></div>
                  </div>
                </header>
 
@@ -233,6 +162,5 @@
          );
       </script>
       <script type="text/javascript" src="gmaps.js"></script>
-
    </body>
 </html>
