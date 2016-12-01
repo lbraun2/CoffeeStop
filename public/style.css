@@ -69,7 +69,7 @@ button{
 
 .content{
   padding: 30px;
-  width: 60%;
+  width: 90%;
   margin: 0 auto;
   margin-top: 10%;
   margin-bottom: 30px;
@@ -229,15 +229,15 @@ td{
   background: transparent;
 }
 #map {
-  width: 45%;
+  width: 50%;
   height: 500px;
 }
 #listing {
   position: absolute;
-  width: 600px;
+  width: 50%;
   height: 500px;
   overflow: auto;
-  left: 500px;
+  left: 55%;
   top: 130px;
   float: right;
   cursor: pointer;
@@ -267,13 +267,18 @@ td{
   width: 24px;
   height: 24px;
 }
+
 #resultsTable {
   margin: 0 auto;
-  color: red;
   border-collapse: collapse;
   width: 240px;
-  left: 300px;
+  left: -50;
 }
+
+.chart{
+  position: absolute;
+}
+
 td{
   margin: 10px 10px 10px 10px;
   color:black;

@@ -103,7 +103,7 @@ for (i = 0; i < results.length; i++) {
        .data(data)
      .enter().append("div")
        .style("width", function(d)
-         { return d * 100 + "px"; })
+         { return d * 60 + "px"; })
          .text(function(d) { i++; return "(" + String.fromCharCode('A'.charCodeAt(0) + i - 1) + ") "+ d; });
 }
 

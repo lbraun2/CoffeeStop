@@ -78,7 +78,7 @@
            render: function() {
                return (
                  <div className="content">
-			
+
                      <p>SEARCH RESULTS</p>
 
                      <div id="locationField">
@@ -88,8 +88,11 @@
                      <div ref="map" id="map"></div>
 
                      <div id="listing">
-					 <p> Ratings </p>
-					 <div className="chart"></div>
+                     <div id = "chart">
+            					 <p> Ratings </p>
+            					 <div className="chart"></div>
+                       </div>
+
                      <table id="resultsTable">
                        <tbody id="results"></tbody>
                      </table>
@@ -123,7 +126,7 @@
                        </table>
                      </div>
                      </div>
-			
+
 
                  </div>
 
