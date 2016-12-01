@@ -38,10 +38,10 @@
    <body>
       <div id="main"></div>
 
-
       <script>
         "use strict";
           // Initialize Firebase
+
           var config = {
             apiKey: "AIzaSyD9xeq34gctsKfIajyTC7DRo1o13knB-zU",
             authDomain: "coffeestop-820c3.firebaseapp.com",
@@ -50,8 +50,9 @@
             messagingSenderId: "282398477281"
           };
           firebase.initializeApp(config);
-
           var userName;
+
+          function initFirebase(){}
 
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -100,6 +101,7 @@
     }, function(error) {
         console.log(error);
       });
+
       </script>
       <script type="text/babel">
          var {
@@ -123,6 +125,9 @@
          });
 
          var LoginRegister = React.createClass({
+           componentDidMount: function(){
+             window.initFirebase();
+           },
            render: function() {
                return (
                  <div className="content">
@@ -136,7 +141,6 @@
            componentDidMount: function(){
              window.initMap();
            },
-
            render: function() {
                return (
                  <div className="content">
@@ -191,7 +195,12 @@
          });
 
          var App = React.createClass({
+
            mixins: [ReactFireMixin],
+           componentDidMount: function(){
+             window.initFirebase();
+           },
+
            render: function() {
              return (
                <div>

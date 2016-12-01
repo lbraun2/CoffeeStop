@@ -80,9 +80,6 @@ function search() {
       displayRatings(results);
       }
     });
-
-
-
 }
 
 function displayRatings(results){
