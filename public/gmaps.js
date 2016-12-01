@@ -104,7 +104,7 @@ for (i = 0; i < results.length; i++) {
      .enter().append("div")
        .style("width", function(d)
          { return d * 100 + "px"; })
-         .text(function(d) { i++; return "(" + String.fromCharCode('A'.charCodeAt(0) + i) + ") "+ d; });
+         .text(function(d) { i++; return "(" + String.fromCharCode('A'.charCodeAt(0) + i - 1) + ") "+ d; });
 }
 
 function clearMarkers() {
