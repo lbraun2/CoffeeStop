@@ -4,12 +4,12 @@ var port = process.env.PORT || 8080
 var app = express()
 var bodyParser = require('body-parser')
 
-
+/*
 firebase.initializeApp({
     serviceAccount: "privkey.json",
     databaseURL: "https://coffeestop-820c3.firebaseio.com"
 });
-var fireRef = firebase.database().ref('users');
+var fireRef = firebase.database().ref('users');*/
 
 // serve static assets normally
 app.use(express.static(__dirname + '/public'))
